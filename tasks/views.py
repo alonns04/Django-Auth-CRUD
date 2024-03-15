@@ -72,7 +72,6 @@ def task_detail(request, task_id):
     task = get_object_or_404(Task, pk=task_id,  user=request.user)
     form = TaskForm(instance=task)
     return render(request, 'task_detail.html ', {'task':task, 'form':form})    
-   
 @login_required 
 def complete_task(request, task_id):
     task = get_object_or_404(Task, pk=task_id, user=request.user)
@@ -108,5 +107,4 @@ def signin(request):
         else: 
             login(request, user)
             return redirect('tasks')
-            
 
