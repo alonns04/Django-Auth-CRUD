@@ -68,9 +68,8 @@ def create_task(request):
             })  
 
 @login_required
-def task_detail(request, task_id): 
-    task = task_id
-    return render(request, 'task_detail.html ', {'task':task})  
+def task_detail(request): 
+    return render(request, 'task_detail.html ')  
 
 @login_required 
 def complete_task(request, task_id):
