@@ -73,7 +73,7 @@ def task_detail(request, task_id):
     if request.method == 'GET':   
         task = get_object_or_404(Task, pk=task_id,  user=request.user)
         form = TaskForm(instance=task)
-        return render(request, 'task_detail.html ',{'task':task, 'form':form})    
+        return render(request, 'task_detail.html ', {'task':task, 'form':form})    
     else:
         try: 
             task = get_object_or_404(Task, pk=task_id,  user=request.user)
@@ -81,6 +81,7 @@ def task_detail(request, task_id):
             form.save()
             return redirect('tasks')
         except ValueError:
+            form = TaskForm(instance=task)
             return render(request, 'task_detail.html ',{'task':task, 'form':form, 'error': 'Error Updating Task'})    
 
 @login_required 
