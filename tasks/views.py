@@ -69,8 +69,7 @@ def create_task(request):
 
 @login_required
 def task_detail(request, task_id): 
-    task = get_object_or_404(Task, pk=task_id)
-    form = TaskForm(instance=task)
+    task = task_id
     return render(request, 'task_detail.html ', {'task':task})  
 
 @login_required 
